@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:pdf_template/src/invoice_widget.dart';
+import 'package:pdf_template/src/pages/invoice_widget.dart';
+import 'package:pdf_template/src/pages/quotation_widget.dart';
 import 'package:pdf_template/src/pdf_generator.dart';
 import 'package:pdf_template/src/pdf_template.dart';
 import 'package:printing/printing.dart';
@@ -38,6 +39,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final InvoiceWidget invoiceWidget = InvoiceWidget();
+  final QuotationWidget quotationWidget = QuotationWidget();
   
 
   @override
@@ -52,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: PdfPreview(
-        build: (_) async => (await PdfGenerate.generate(invoiceWidget)).save(),
+        build: (_) async => (await PdfGenerate.generate(quotationWidget)).save(),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

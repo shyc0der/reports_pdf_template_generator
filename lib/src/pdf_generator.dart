@@ -76,7 +76,7 @@ class PdfGenerator{
                   pw.SizedBox(height: 14),
 
                   // headers
-                  if(documentType == DocumentType.invoice) pw.Padding(padding: const pw.EdgeInsets.symmetric(vertical: 1), child: pw.Text('From')),
+                  if(documentType == DocumentType.invoice ||documentType == DocumentType.quotation) pw.Padding(padding: const pw.EdgeInsets.symmetric(vertical: 1), child: pw.Text('From')),
                   if(headerInfo?.title != null)
                     pw.Text(headerInfo!.title!, style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 15)),
                   
@@ -97,7 +97,7 @@ class PdfGenerator{
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: [
                   if(headerExtras != null) pw.SizedBox(height: 39),
-                  if(documentType == DocumentType.invoice) pw.Padding(padding: const pw.EdgeInsets.symmetric(vertical: 1), child: pw.Text('For')),
+                  if(documentType == DocumentType.invoice ||documentType == DocumentType.quotation) pw.Padding(padding: const pw.EdgeInsets.symmetric(vertical: 1), child: pw.Text('For')),
                   if(headerExtras?.title != null)
                     pw.Text(headerExtras!.title!, style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 15)),
                   
@@ -132,7 +132,7 @@ class PdfGenerator{
               children: [
                 for(var _des in headerInfo!.descriptionItems)
                   pw.Padding(
-                    padding: const pw.EdgeInsets.symmetric(vertical: 1),
+                    padding: const pw.EdgeInsets.symmetric(vertical: 3),
                     child: pw.Text(_des, style: const pw.TextStyle(fontSize: 12))
                   ),
               ]
