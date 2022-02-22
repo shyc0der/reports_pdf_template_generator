@@ -37,7 +37,7 @@ Widget customTable({required List<String> headers, required List<List<String>> c
                 ),
             ]
           ),
-          TableRow(children: [SizedBox(height: 10),])
+          TableRow(children: [SizedBox(height: 70),])
         ]
       );
 }
