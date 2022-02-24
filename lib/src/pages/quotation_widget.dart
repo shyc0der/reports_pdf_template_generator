@@ -14,7 +14,8 @@ class QuotationWidget implements PdfTemplate  {
   HeaderItems? headerInfo= HeaderItems(
     title: companyName, 
     items: [companyEmail, companyAddress, companyPhoneNo],
-    descriptionItems: ['Quotation No: #1234543df44f', 'Date: 2022-02-21', 'Date Delivery By: 2022-03-05', ],
+    descriptionItems: ['Quotation No: #1234543df44f', 'Date: 2022-02-21', 'Date Delivery By: 2022-03-05', ]
+                        .map((e) => e.toDescriptionItems()).toList(),
   );
 
   @override

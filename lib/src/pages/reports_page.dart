@@ -41,8 +41,8 @@ class ReportsPdf implements PdfTemplate {
   HeaderItems? get headerInfo => HeaderItems(
       title: companyName, 
       items: [companyEmail, companyAddress, companyPhoneNo],
-      descriptionItems: [title, 'Date Generated: $dateGenerated', dateRange, 
-      if(filtersApplied?.isNotEmpty == true) filtersApplied.toString() 
+      descriptionItems: [title.toDescriptionItems(true), ...['Date Generated: $dateGenerated', dateRange, 
+      if(filtersApplied?.isNotEmpty == true) filtersApplied.toString() ].map((e) => e.toDescriptionItems()).toList()
       ],
     );
 

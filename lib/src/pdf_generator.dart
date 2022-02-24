@@ -145,7 +145,7 @@ class PdfGenerator{
                 for(var _des in headerInfo!.descriptionItems)
                   pw.Padding(
                     padding: const pw.EdgeInsets.symmetric(vertical: 3),
-                    child: pw.Text(_des, style: const pw.TextStyle(fontSize: 12))
+                    child: pw.Text(_des.value, style: pw.TextStyle(fontSize: _des.bold ? 14 : 12, fontWeight: _des.bold ? pw.FontWeight.bold : null))
                   ),
               ]
             ),
@@ -160,7 +160,19 @@ class HeaderItems {
   HeaderItems({this.title, this.items = const [], this.descriptionItems = const []});
   String? title;
   List<String> items;
-  List<String> descriptionItems;
+  List<DescriptionItems> descriptionItems;
+}
+
+class DescriptionItems {
+  DescriptionItems(this.value, [this.bold = false]);
+  String value;
+  bool bold;
+}
+
+extension StringToDescription on String{
+  DescriptionItems toDescriptionItems([bool bold = false]){
+    return DescriptionItems(this, bold);
+  }
 }
 
 enum DocumentType{

@@ -14,7 +14,7 @@ class InvoiceWidget implements PdfTemplate  {
   HeaderItems? headerInfo= HeaderItems(
     title: companyName, 
     items: [companyEmail, companyAddress, companyPhoneNo],
-    descriptionItems: ['InvoiceNo: #1234543df44f', 'Date: 2022-02-21', ],
+    descriptionItems: ['InvoiceNo: #1234543df44f', 'Date: 2022-02-21', ].map((e) => e.toDescriptionItems()).toList(),
   );
 
   @override
