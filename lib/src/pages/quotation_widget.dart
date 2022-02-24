@@ -27,7 +27,7 @@ class QuotationWidget implements PdfTemplate  {
   Widget get body => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      customTable(headers: _tableHeaders, contents: _contents),
+      ...customTable(headers: _tableHeaders, contents: _contents, columnWidths: columnWidths),
 
       // totals
       Align(
@@ -44,14 +44,23 @@ class QuotationWidget implements PdfTemplate  {
 
   
 
-  final List<String> _tableHeaders = const ['No.', 'DESCRIPTION', 'QYT', 'UNIT PRICE', 'TOTAL'];
+  final List<String> _tableHeaders = const ['No.', 'DESCRIPTION', 'QYT', 'UNIT PRICE','VAT', 'TOTAL'];
   
   final List<List<String>> _contents = [
-    ['1', 'Transport beba mawe', '1', '10,000', '10,000'],
-    ['2', 'Transport', '1', '20,000', '20,000'],
-    ['3', 'Logistics', '1', '5,000', '5,000'],
-    ['4', 'Logistics', '1', '5,000', '5,000'],
+    ['1', 'Transport beba mawe', '1', '10,000','16', '10,000'],
+    ['2', 'Transport', '1', '20,000', '16','20,000'],
+    ['3', 'Logistics', '1', '5,000', '16','5,000'],
+    ['4', 'Logistics', '1', '5,000', '16','5,000'],
   ];
+
+  Map<int, TableColumnWidth> get columnWidths=> {
+    0: const FlexColumnWidth(2),
+    1: const FlexColumnWidth(10),
+    2: const FlexColumnWidth(2),
+    3: const FlexColumnWidth(4),
+    4: const FlexColumnWidth(2),
+    5: const FlexColumnWidth(4),
+  };
  
 
 

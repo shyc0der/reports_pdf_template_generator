@@ -1,4 +1,5 @@
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -28,14 +29,25 @@ class PdfGenerator{
       pw.MultiPage(
         pageTheme: const pw.PageTheme(pageFormat: PdfPageFormat.a4),
         header: (_)=> _buildHeader(logo, documentType: documentType, headerInfo: headerInfo, headerExtras: headerExtras),
-        footer: (_)=> pw.Container(
-          height: 10,
-          width: double.infinity,
-          color: primaryColorAccent
-        ),
+        footer: (_footerContext) {
+          return pw.Column(
+            children: [
+                pw.Container(
+                  height: 10,
+                  width: double.infinity,
+                  color: primaryColorAccent
+                ),
+                if(_footerContext.pagesCount > 1 ) pw.Padding(
+                  padding: const pw.EdgeInsets.all(8.0),
+                  child: pw.Text('Page ${_footerContext.pageNumber} of ${_footerContext.pagesCount}'),
+                )
+
+            ],
+          );
+        },
         build: (context){
           return [
-            if(body != null) body
+            if(body != null) body,
           ];
         }
       )

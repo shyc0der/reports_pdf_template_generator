@@ -27,7 +27,7 @@ class InvoiceWidget implements PdfTemplate  {
   Widget get body => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      customTable(headers: _tableHeaders, contents: _contents),
+      ...customTable(headers: _tableHeaders, contents: _contents, columnWidths: columnWidths),
 
       // totals
       Align(
@@ -52,5 +52,13 @@ class InvoiceWidget implements PdfTemplate  {
     ['3', 'Logistics', '1', '5,000', '5,000'],
     ['4', 'Logistics', '1', '5,000', '5,000'],
   ];
+
+  Map<int, TableColumnWidth> get columnWidths=> {
+    0: const FlexColumnWidth(2),
+    1: const FlexColumnWidth(10),
+    2: const FlexColumnWidth(2),
+    3: const FlexColumnWidth(4),
+    4: const FlexColumnWidth(4),
+  };
 
 }

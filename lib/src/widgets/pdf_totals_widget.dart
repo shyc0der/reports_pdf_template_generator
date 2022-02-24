@@ -4,9 +4,8 @@ Widget pdfTotals (List<PdfTotalItems> items)=> Padding(
     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        
-      ]
+      mainAxisSize: MainAxisSize.min,
+      children: items
     ),
   );
 

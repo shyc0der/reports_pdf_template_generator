@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf_template/src/pages/invoice_widget.dart';
-import 'package:pdf_template/src/pages/quotation_widget.dart';
-import 'package:pdf_template/src/pdf_generator.dart';
+import 'package:pdf_template/src/pages/reports/jobs_per_vehicle_report_pdf.dart';
 import 'package:pdf_template/src/pdf_template.dart';
 import 'package:printing/printing.dart';
 
@@ -39,7 +36,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final InvoiceWidget invoiceWidget = InvoiceWidget();
-  final QuotationWidget quotationWidget = QuotationWidget();
+  final JobsPerVehicleReportPdf quotationWidget = JobsPerVehicleReportPdf();
   
 
   @override
